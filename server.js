@@ -4,6 +4,7 @@ const { selectAll } = require('./config/orm');
 const orm = require("./config/orm");
 
 const app = express();
+app.use(express.static(__dirname + '/assets'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
