@@ -1,0 +1,25 @@
+body {
+    background: rgb(255,199,44);
+}
+
+#burg-img {
+    width: 400px;
+}
+
+#burger-input {
+    width: 75%;
+}
+
+#right, #left {
+    padding-top: 100px;
+}
+
+
+li {
+    background-color: white;
+    padding: 10px;
+    list-style-type: none;
+    border: 2px black solid;
+    font-size: 20px;
+}
+
