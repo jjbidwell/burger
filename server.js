@@ -1,6 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const mysql = require('mysql');
+const orm = require("./config/orm");
 
 const app = express();
 
