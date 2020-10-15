@@ -28,8 +28,14 @@ function displayBurgers(result){
 app.get('/', (req, res) => {
     notEatenArray = [];
     eatenArray = [];
-    selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
+    orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
     res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
+});
+
+app.post('/', (req, res) => {
+    //console.log(req.body.burger_input);
+    orm.postTo('burgers', 'burger_name', req.body.burger_input);
+    res.redirect('/')
 });
 
 app.listen(PORT, () => {

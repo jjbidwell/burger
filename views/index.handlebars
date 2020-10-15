@@ -18,12 +18,12 @@
                     <h1 class="mt-5 text-center">cheemsburbger</h1>
                     <img class="mx-auto d-block" id="burg-img" src="/images/burger.png" alt="Cheemsburbger">
                 </div>   
-                <form>
+                <form action="/" method="POST">
                     <div class="form-group">
-                      <input type="input" class="mx-auto d-block form-control" id="burger-input" placeholder="Enter your burger here!">
+                      <input type="input" class="mx-auto d-block form-control" id="burger_input" name="burger_input" placeholder="Enter your burger here!">
                     </div>
-                  <button class="mx-auto d-block btn btn-info">Submit your burger!</button>
-                  </form>
+                  <button type="submit" class="mx-auto d-block btn btn-info">Submit your burger!</button>
+                </form>
             </div>
             <div id="right" class="col col-lg-3">
                 <h5 id="eaten" class="text-center list-title">Burgers Eaten:</h5>
