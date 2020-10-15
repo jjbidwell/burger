@@ -5,8 +5,11 @@
             <div id="left" class="col col-lg-3">
                 <h5 id="to-eat" class="text-center list-title">Burgers to Eat:</h5>
                 <ul id="to-eat-list">
-                    <li>Item One <button class="btn btn-danger">Eat me!</button></li>
-                    <li>Item Two <button class="btn btn-danger">Eat me!</button></li>
+                    {{#each not_eaten}}
+                        <li>
+                            <p>{{ burger_name }}<button class="btn btn-danger">Eat me!</button></p>
+                        </li>
+                    {{/each}}
                 </ul>
             </div>
 
@@ -25,7 +28,11 @@
             <div id="right" class="col col-lg-3">
                 <h5 id="eaten" class="text-center list-title">Burgers Eaten:</h5>
                 <ul id="eaten-list">
-
+                    {{#each eaten}}
+                        <li>
+                            <p>{{ burger_name }}</p>
+                        </li>
+                    {{/each}}
                 </ul>
             </div>
         </div>

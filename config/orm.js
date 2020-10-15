@@ -7,14 +7,15 @@ const connection = require("./connection.js");
 // These help avoid SQL injection
 // https://en.wikipedia.org/wiki/SQL_injection
 const orm = {
-    selectAll: (whatToSelect, table) => {
+    selectAll: (whatToSelect, table, callback) => {
         connection.query('SELECT ?? FROM ??',[whatToSelect, table], (err, result) => {
             if (err) {
                 throw err;
             }
-            console.log(result);
+            callback(result);
         })
     },
+
     selectWhere: (inputTable, colmumnSearch, columnValue) => {
         const queryString ='SELECT party_name FROM ?? WHERE ?? = ?';
         const replacements = [inputTable, colmumnSearch, columnValue];

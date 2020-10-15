@@ -1,16 +1,34 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
+const exphbs = require('express-handlebars');
+const { selectAll } = require('./config/orm');
 const orm = require("./config/orm");
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+let notEatenArray = [];
+let eatenArray = [];
 
 const PORT = process.env.PORT || 8080;
 
-app.engine("handlebars", handlebars({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+function displayBurgers(result){
+    result.forEach(element => {
+        if(element.devoured === 0){
+            notEatenArray.push(element);
+        } else {
+            eatenArray.push(element);
+        }
+    });
+}
 
-app.get('*', (req, res) => {
-    res.send('<h1>cheemsburbger</h1>');
+app.get('/', (req, res) => {
+    notEatenArray = [];
+    eatenArray = [];
+    selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
+    res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
 });
 
 app.listen(PORT, () => {
