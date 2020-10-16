@@ -7,7 +7,7 @@
                 <ul id="to-eat-list">
                     {{#each not_eaten}}
                         <li>
-                            <p>{{ burger_name }}<button data-index={{ id }} class="delete-btn btn btn-danger">Eat me!</button></p>
+                            <p>{{ burger_name }}<button id='btn{{ id }}' class="delete-btn btn btn-danger">Eat me!</button></p>
                         </li>
                     {{/each}}
                 </ul>
