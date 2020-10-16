@@ -2,7 +2,7 @@ const orm = require('../config/orm.js');
 
 const burger = {
     all: (callback) => {
-        orm.selectAll('burger_name', "burgers", (res) => {
+        orm.selectAll(['id', 'burger_name', 'devoured'], "burgers", (res) => {
             callback(res);
         })
     }, 

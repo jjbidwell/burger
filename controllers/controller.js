@@ -1,5 +1,6 @@
 const express = require('express');
 const burger = require('../models/burger');
+require = ('console.table');
 
 const router = express.Router();
 
@@ -17,10 +18,15 @@ router.get('/', (req, res) => {
     notEatenArray = [];
     eatenArray = [];
     burger.all((data) => {
-      console.log(data)
+      data.forEach(element => {
+          if(element.devoured === 1){
+              eatenArray.push(element);
+          } else {
+              notEatenArray.push(element);
+          }
+      })
+      res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
     });
-   // orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
-    res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
 });
 
 router.post('/', (req, res) => {
