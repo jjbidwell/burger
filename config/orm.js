@@ -17,7 +17,7 @@ const orm = {
     })
   },
 
-  postTo: (table, variables, values) => {
+  insert: (table, variables, values) => {
     const queryString = `INSERT INTO ?? VALUES('?');`
     connection.query(queryString, [table, variables, values], (err, result) => {
       if (err) {

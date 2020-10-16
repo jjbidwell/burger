@@ -1,4 +1,5 @@
 const express = require('express');
+const burger = require('../models/burger');
 
 const router = express.Router();
 
@@ -15,7 +16,10 @@ function displayBurgers(result){
 router.get('/', (req, res) => {
     notEatenArray = [];
     eatenArray = [];
-    //orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
+    burger.all((data) => {
+      console.log(data)
+    });
+   // orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
     res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
 });
 
