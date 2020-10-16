@@ -14,6 +14,9 @@ body {
     padding-top: 100px;
 }
 
+.delete-btn {
+    margin: 10px 10px 0 10px;
+}
 
 li {
     background-color: white;

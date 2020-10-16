@@ -1,3 +1,4 @@
+//const { delete } = require("../controllers/controller.js");
 const connection = require("./connection.js");
 
 // Object Relational Mapper (ORM)
@@ -17,17 +18,25 @@ const orm = {
     })
   },
 
-  insert: (table, variables, values) => {
+  insert: (table, variables, values, callback) => {
     const queryString = `INSERT INTO ??(??) VALUES(?);`
     connection.query(queryString, [table, variables, values], (err, result) => {
       if (err) {
         throw err;
       }
+      callback(result);
     })
+  },
+
+  remove: (table, id, callback) => {
+    const queryString = 'DELETE FROM ?? WHERE id = ?;'
+    connection.query(queryString, [table, id], (err, result) => {
+      if (err){
+        throw err;
+      }
+      callback(result);
+    });
   }
-
-    
-
 };
 
 module.exports = orm;

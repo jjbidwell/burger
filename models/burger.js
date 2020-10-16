@@ -11,6 +11,12 @@ const burger = {
         orm.insert('burgers', 'burger_name', newBurger, (res) => {
             callback(res);
         })
+    },
+
+    delete: (id, callback) => {
+        orm.remove('burgers', id, (res) => {
+            callback(res);
+        })
     }
 }
 

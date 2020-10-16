@@ -19,14 +19,18 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-    burger.create(req.body.burger_input, (err, res) => {
-        if (err) throw err;
+router.post('/api/burgers', (req, res) => {
+    burger.create(req.body.burger_input, () => {        
     })
-   console.log(res);
-    res.redirect('/')
+    res.redirect('/');
 });
 
+router.delete('/api/burgers/:id', (req, res) => {
+    burger.delete(req.params.id, (err) => {
+
+        res.redirect('/')
+    });
+})
 
 
   module.exports = router;

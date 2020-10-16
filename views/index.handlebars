@@ -7,7 +7,7 @@
                 <ul id="to-eat-list">
                     {{#each not_eaten}}
                         <li>
-                            <p>{{ burger_name }}<button data-index={{ id }} class="btn btn-danger">Eat me!</button></p>
+                            <p>{{ burger_name }}<button data-index={{ id }} class="delete-btn btn btn-danger">Eat me!</button></p>
                         </li>
                     {{/each}}
                 </ul>
@@ -18,7 +18,7 @@
                     <h1 class="mt-5 text-center">cheemsburbger</h1>
                     <img class="mx-auto d-block" id="burg-img" src="/images/burger.png" alt="Cheemsburbger">
                 </div>   
-                <form action="/" method="POST">
+                <form action="/api/burgers" method="POST">
                     <div class="form-group">
                       <input type="input" class="mx-auto d-block form-control" id="burger_input" name="burger_input" placeholder="Enter your burger here!">
                     </div>
@@ -30,7 +30,7 @@
                 <ul id="eaten-list">
                     {{#each eaten}}
                         <li>
-                            <p>{{ burger_name }}<button data-index={{ id }} class="btn btn-danger">Eat me!</button></p>
+                            <p>{{ burger_name }}</p>
                         </li>
                     {{/each}}
                 </ul>
