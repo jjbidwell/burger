@@ -15,7 +15,7 @@ function displayBurgers(result){
 router.get('/', (req, res) => {
     notEatenArray = [];
     eatenArray = [];
-    orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
+    //orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
     res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
 });
 
@@ -25,9 +25,6 @@ router.post('/', (req, res) => {
     res.redirect('/')
 });
 
-router.listen(PORT, () => {
-    // Log (server-side) when our server has started
-    console.log(`Server listening on: http://localhost:${ PORT}`);
-  });
+
 
   module.exports = router;
