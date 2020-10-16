@@ -8,7 +8,7 @@ const burger = {
     }, 
 
     create: (newBurger, callback) => {
-        orm.insert("burgers", newBurger, (res) => {
+        orm.insert('burgers', 'burger_name', newBurger, (res) => {
             callback(res);
         })
     }

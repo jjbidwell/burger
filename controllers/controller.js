@@ -4,16 +4,6 @@ require = ('console.table');
 
 const router = express.Router();
 
-function displayBurgers(result){
-    result.forEach(element => {
-        if(element.devoured === 0){
-            notEatenArray.push(element);
-        } else {
-            eatenArray.push(element);
-        }
-    });
-
-}
 router.get('/', (req, res) => {
     notEatenArray = [];
     eatenArray = [];
@@ -30,8 +20,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    //console.log(req.body.burger_input);
-    orm.postTo('burgers', 'burger_name', req.body.burger_input);
+    burger.create(req.body.burger_input, (err, res) => {
+        if (err) throw err;
+    })
+   console.log(res);
     res.redirect('/')
 });
 

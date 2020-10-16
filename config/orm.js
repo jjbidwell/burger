@@ -18,7 +18,7 @@ const orm = {
   },
 
   insert: (table, variables, values) => {
-    const queryString = `INSERT INTO ?? VALUES('?');`
+    const queryString = `INSERT INTO ??(??) VALUES(?);`
     connection.query(queryString, [table, variables, values], (err, result) => {
       if (err) {
         throw err;
