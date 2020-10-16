@@ -1,19 +1,23 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-const { selectAll } = require('./config/orm');
-const orm = require("./config/orm");
+const routes = require('./controllers/controller.js');
+
+const PORT = process.env.PORT || 8080;
 
 const app = express();
+
 app.use(express.static(__dirname + '/assets'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(routes);
+
 let notEatenArray = [];
 let eatenArray = [];
 
-const PORT = process.env.PORT || 8080;
+
 
 function displayBurgers(result){
     result.forEach(element => {
@@ -25,18 +29,6 @@ function displayBurgers(result){
     });
 }
 
-app.get('/', (req, res) => {
-    notEatenArray = [];
-    eatenArray = [];
-    orm.selectAll(['burger_name', 'devoured'], 'burgers', displayBurgers);
-    res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
-});
-
-app.post('/', (req, res) => {
-    //console.log(req.body.burger_input);
-    orm.postTo('burgers', 'burger_name', req.body.burger_input);
-    res.redirect('/')
-});
 
 app.listen(PORT, () => {
     // Log (server-side) when our server has started

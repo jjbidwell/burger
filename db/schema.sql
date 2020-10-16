@@ -9,7 +9,3 @@ CREATE TABLE burgers(
     PRIMARY KEY(id)
 );
 
-INSERT INTO burgers(burger_name)
-VALUES('Beyond Burger');
-
-SELECT * FROM burgers;
