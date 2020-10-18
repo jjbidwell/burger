@@ -23,7 +23,7 @@ $(document).ready(function(){
           }).then(result => {
               console.log(result);
           }).catch((err)=>{
-              location.reload();
+              //location.reload();
           })
     }
    

@@ -20,7 +20,6 @@ app.post('/api/burgers', (req, res) => {
 app.put('/api/burgers/:id', (req, res) => {
     burger.eat(req.params.id, () => {
     })
-    console.log(res);
     res.redirect('/')
 });
 
