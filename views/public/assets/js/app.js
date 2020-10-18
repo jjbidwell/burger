@@ -8,9 +8,9 @@ $(document).ready(function(){
         $('#to-eat').hide()
     }
 
-    $('.delete-btn').on('click', () => {
-        const id = $('#btn1').attr("class")
-        console.log('delete')
+    $(document).on('click', ['class=eat-btn'],() => {
+        const id = $(this).attr('id');
+        console.log('Burger eaten!');
         //console.log($(this).data("index"));
         console.log(id);
     })

@@ -5,17 +5,17 @@ require = ('console.table');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    notEatenArray = [];
-    eatenArray = [];
+
     burger.all((data) => {
-      data.forEach(element => {
-          if(element.devoured === 1){
-              eatenArray.push(element);
-          } else {
-              notEatenArray.push(element);
-          }
-      })
-      res.render('index', {not_eaten: notEatenArray, eaten: eatenArray});
+    //   data.forEach(element => {
+    //       if(element.devoured === 1){
+    //           eatenArray.push(element);
+    //       } else {
+    //           notEatenArray.push(element);
+    //       }
+    //   })
+    
+    res.render('index', {burgers: data});
     });
 });
 
