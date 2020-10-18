@@ -14,20 +14,22 @@ $(document).ready(function(){
     function eat(){
         const burger = {
             id: parseInt($(this).data('id')),
-            burger_name: $(this).parent().text().replace("Eat me!", "").trim()
+            burger_name: $(this).parent().text().replace("Devour it!", "").trim()
         }
         const url = `/api/burgers/${burger.id}`
-        $.ajax(url,{
-            method: "PUT",
-            data: JSON.stringify(burger),
-            contentType: "application/json; charset=UTF-8"
-          }).then(() => {
-              location.reload()
-          }).catch(()=>{
-              location.reload();
-          })
+        ajax(url, burger);
     }
-   
+   function ajax(url, burger){
+    $.ajax(url,{
+        type: "PUT",
+        data: JSON.stringify(burger),
+        contentType: "application/json; charset=UTF-8"
+      }).then(() => {
+          location.reload()
+      }).catch(()=>{
+          location.reload();
+      })
+   }
 
     
 });

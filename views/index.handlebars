@@ -7,7 +7,7 @@
                 <ul id="to-eat-list">
                     {{#each burgers}}
                         {{#unless devoured}}
-                        <li>{{burger_name}}<button data-id={{id}} class="btn btn-danger eat-btn">Eat me!</button></li>
+                        <li class="word-break text-wrap">{{burger_name}}<button data-id={{id}} class="btn btn-danger eat-btn float-right">Devour it!</button></li>
                         {{/unless}}
                     {{/each}}
                 </ul>
