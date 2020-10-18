@@ -25,6 +25,13 @@ router.post('/api/burgers', (req, res) => {
     res.redirect('/');
 });
 
+router.put('/api/burgers/:id', (req, res) => {
+    burger.eat(req.params.id, () => {
+    })
+    console.log(res);
+    res.redirect('/')
+});
+
 router.delete('/api/burgers/:id', (req, res) => {
     burger.delete(req.params.id, (err) => {
 

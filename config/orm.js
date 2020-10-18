@@ -28,6 +28,16 @@ const orm = {
     })
   },
 
+  update: (table, change, id ,callback) => {
+    const queryString = 'UPDATE ?? SET devoured = ? WHERE id = ?';
+    connection.query(queryString, [table, change, id], (err, result) => {
+      if (err){
+        throw err;
+      }
+      callback(result);
+    })
+  },
+
   remove: (table, id, callback) => {
     const queryString = 'DELETE FROM ?? WHERE id = ?;'
     connection.query(queryString, [table, id], (err, result) => {
