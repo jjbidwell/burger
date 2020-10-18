@@ -2,42 +2,50 @@ const express = require('express');
 const burger = require('../models/burger');
 require = ('console.table');
 
-const router = express.Router();
+const app = express();
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
 
     burger.all((data) => {
-    //   data.forEach(element => {
-    //       if(element.devoured === 1){
-    //           eatenArray.push(element);
-    //       } else {
-    //           notEatenArray.push(element);
-    //       }
-    //   })
-    
-    res.render('index', {burgers: data});
+        res.render('index', {burgers: data});
     });
 });
 
-router.post('/api/burgers', (req, res) => {
+app.post('/api/burgers', (req, res) => {
     burger.create(req.body.burger_input, () => {        
     })
     res.redirect('/');
 });
 
-router.put('/api/burgers/:id', (req, res) => {
+app.put('/api/burgers/:id', (req, res) => {
     burger.eat(req.params.id, () => {
     })
     console.log(res);
     res.redirect('/')
 });
 
-router.delete('/api/burgers/:id', (req, res) => {
-    burger.delete(req.params.id, (err) => {
+// app.put('/api/burgers/:id', (req, res) => {
+    
+//     console.log(req.params.id)
+//     //const burgerId = parseInt(req.params.id)
+//     //console.log(typeof burgerId);
+//     burger.update('devoured = true', parseInt(req.params.id), (result) => {
+//         if (result.affectedRows === 0) {
+//             // If no rows were affected, then the ID must not exist, so 404
+//             return res.status(404).end();
+//           }
+          
+//     });
+//     //res.redirect('/');
+    
+    
+// });
 
-        res.redirect('/')
+app.delete('/api/burgers/:id', (req, res) => {
+    burger.delete(req.params.id, () => {
+        res.redirect('/');
     });
 })
 
 
-  module.exports = router;
+  module.exports = app;

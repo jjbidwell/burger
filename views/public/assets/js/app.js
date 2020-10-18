@@ -8,10 +8,26 @@ $(document).ready(function(){
         $('#to-eat').hide()
     }
 
-    $(document).on('click', ['class=eat-btn'],() => {
-        const id = $(this).attr('id');
-        console.log('Burger eaten!');
-        //console.log($(this).data("index"));
-        console.log(id);
-    })
-})
+    $(document).on('click', 'button.eat-btn', eat) 
+
+
+    function eat(){
+        const burger = {
+            id: parseInt($(this).data('id')),
+            burger_name: $(this).parent().text().replace("Eat me!", "").trim()
+        }
+        $.ajax({
+            url: "/api/burgers/"+burger.id,
+            method: "PUT",
+            data: burger
+          }).then(result => {
+              console.log(result);
+          }).catch((err)=>{
+              location.reload();
+          })
+    }
+   
+
+    
+});
+

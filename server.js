@@ -16,20 +16,6 @@ app.set("view engine", "handlebars");
 
 app.use(routes);
 
-let notEatenArray = [];
-let eatenArray = [];
-
-
-
-function displayBurgers(result){
-    result.forEach(element => {
-        if(element.devoured === 0){
-            notEatenArray.push(element);
-        } else {
-            eatenArray.push(element);
-        }
-    });
-}
 
 
 app.listen(PORT, () => {

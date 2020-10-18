@@ -12,12 +12,16 @@ const burger = {
             callback(res);
         })
     },
-
     eat: (id, callback) => {
         orm.update('burgers', '1', id, (res) => {
             callback(res);
         })
     },
+    // update: (change, id, callback) => {
+    //     orm.update('burgers', change , id, (res) => {
+    //         callback(res);
+    //     })
+    // },
     
 
     delete: (id, callback) => {

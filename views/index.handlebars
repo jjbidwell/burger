@@ -5,9 +5,9 @@
             <div id="left" class="col col-lg-3">
                 <h5 id="to-eat" class="text-center list-title">Burgers to Eat:</h5>
                 <ul id="to-eat-list">
-                    {{#each burger}}
+                    {{#each burgers}}
                         {{#unless devoured}}
-                        <li>{{burger_name}}</li>
+                        <li>{{burger_name}}<button data-id={{id}} class="btn btn-danger eat-btn">Eat me!</button></li>
                         {{/unless}}
                     {{/each}}
                 </ul>
@@ -28,9 +28,9 @@
             <div id="right" class="col col-lg-3">
                 <h5 id="eaten" class="text-center list-title">Burgers Eaten:</h5>
                 <ul id="eaten-list">
-                    {{#each burger}}
+                    {{#each burgers}}
                         {{#if devoured}}
-                        {{burger_name}}
+                        <li>{{burger_name}}</li>
                         {{/if}}
                     {{/each}}
                 </ul>
