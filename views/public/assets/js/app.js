@@ -16,10 +16,10 @@ $(document).ready(function(){
             id: parseInt($(this).data('id')),
             burger_name: $(this).parent().text().replace("Eat me!", "").trim()
         }
-        $.ajax({
-            url: "/api/burgers/"+burger.id,
+        $.ajax("/api/burgers/"+burger.id,{
             method: "PUT",
-            data: burger
+            data: JSON.stringify(burger),
+            contentType: "application/json; charset=UTF-8"
           }).then(result => {
               console.log(result);
           }).catch((err)=>{
